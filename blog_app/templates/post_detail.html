@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ post_detail_queryset.post_head_image.url }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>{{ post_detail_queryset.post_title }}</h1>
+                            <h2 class="subheading">{{ post_detail_queryset.post_title }}</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="{% url 'post_detail_page' post_id=post_detail_queryset.id %}">{{ post_detail_queryset.user_id }}</a>
+                                on {{ post_detail_queryset.post_date }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>
+                            {{ post_detail_queryset.post_text }}
+                        </p>
+                        {% for image in post_detail_images %}
+                            <img width="690px" height="365px" src="{{ image.images.url }}">
+                            <br>
+                            <br>
+                        {% endfor %}
+                            Placeholder text by
+                            <a href="#">{{ post_detail_queryset.user_id }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    {% endblock %}
