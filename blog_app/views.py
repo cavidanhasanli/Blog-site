@@ -34,6 +34,7 @@ def post_detail_view(request, post_id):
 def post_contact_view(request):
     context = {}
     form = PostContactForm()
+    print("TEST")
     if request.method == 'POST':
         form = PostContactForm(request.POST)
         if form.is_valid():
